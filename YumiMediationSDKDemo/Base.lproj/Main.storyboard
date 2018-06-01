@@ -123,12 +123,6 @@
                                     <outlet property="delegate" destination="whP-gf-Uak" id="Hye-gT-Hkf"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Banner custom size" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R10-xK-0kQ">
-                                <rect key="frame" x="28" y="140.5" width="191" height="14.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -138,7 +132,6 @@
                             <constraint firstItem="i5N-Pm-zdk" firstAttribute="leading" secondItem="0vB-1p-CX2" secondAttribute="leading" id="1PS-l7-Udy"/>
                             <constraint firstItem="oH6-ui-Q2J" firstAttribute="leading" secondItem="nuk-QY-erE" secondAttribute="trailing" constant="5" id="AC4-sZ-JSB"/>
                             <constraint firstItem="PpH-Ej-pg8" firstAttribute="trailing" secondItem="51v-oc-axB" secondAttribute="trailing" id="ASY-zX-Uy3"/>
-                            <constraint firstItem="R10-xK-0kQ" firstAttribute="leading" secondItem="Vi2-Fy-vWV" secondAttribute="leading" id="BpF-CC-6R9"/>
                             <constraint firstItem="0DQ-ML-daa" firstAttribute="width" secondItem="oH6-ui-Q2J" secondAttribute="width" id="GB8-WV-LAF"/>
                             <constraint firstItem="Vi2-Fy-vWV" firstAttribute="top" secondItem="nuk-QY-erE" secondAttribute="bottom" constant="80" id="Hq7-e1-YYk"/>
                             <constraint firstItem="PpH-Ej-pg8" firstAttribute="top" secondItem="7eA-Rg-9it" secondAttribute="bottom" constant="-1" id="Iy9-vj-hDM"/>
@@ -146,11 +139,9 @@
                             <constraint firstItem="51v-oc-axB" firstAttribute="trailing" secondItem="0DQ-ML-daa" secondAttribute="trailing" id="M3L-OU-wNO"/>
                             <constraint firstItem="oH6-ui-Q2J" firstAttribute="height" secondItem="nuk-QY-erE" secondAttribute="height" id="MyQ-sZ-TI4"/>
                             <constraint firstItem="3iQ-eE-Hxy" firstAttribute="centerY" secondItem="nuk-QY-erE" secondAttribute="centerY" id="PDY-y0-7xi"/>
-                            <constraint firstItem="R10-xK-0kQ" firstAttribute="centerY" secondItem="51v-oc-axB" secondAttribute="centerY" id="PHr-Ds-2XZ"/>
                             <constraint firstItem="51v-oc-axB" firstAttribute="top" secondItem="nuk-QY-erE" secondAttribute="bottom" constant="12" id="Rd1-G9-Hhz"/>
                             <constraint firstItem="0DQ-ML-daa" firstAttribute="height" secondItem="oH6-ui-Q2J" secondAttribute="height" id="Vhf-cE-0P5"/>
                             <constraint firstItem="i5N-Pm-zdk" firstAttribute="top" secondItem="0vB-1p-CX2" secondAttribute="bottom" id="XVX-TE-adW"/>
-                            <constraint firstItem="51v-oc-axB" firstAttribute="leading" secondItem="R10-xK-0kQ" secondAttribute="trailing" constant="5" id="bcm-0z-YMB"/>
                             <constraint firstItem="3iQ-eE-Hxy" firstAttribute="height" secondItem="nuk-QY-erE" secondAttribute="height" id="d5f-Z0-32c"/>
                             <constraint firstItem="oH6-ui-Q2J" firstAttribute="centerY" secondItem="nuk-QY-erE" secondAttribute="centerY" id="dcX-sR-w9r"/>
                             <constraint firstItem="0DQ-ML-daa" firstAttribute="centerY" secondItem="oH6-ui-Q2J" secondAttribute="centerY" id="fo2-My-BgV"/>
