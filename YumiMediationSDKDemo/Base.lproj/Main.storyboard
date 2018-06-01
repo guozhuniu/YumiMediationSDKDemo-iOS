@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="whP-gf-Uak">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="whP-gf-Uak">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -129,13 +129,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="NZb-rr-MON">
-                                <rect key="frame" x="103.5" y="157" width="42" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="oBK-VX-3Vu"/>
-                                    <constraint firstAttribute="width" constant="40" id="q4M-nF-X4d"/>
-                                </constraints>
-                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -143,7 +136,6 @@
                             <constraint firstItem="0vB-1p-CX2" firstAttribute="leading" secondItem="TpU-gO-2f1" secondAttribute="leadingMargin" constant="5" id="0cC-lp-7W2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0vB-1p-CX2" secondAttribute="trailing" constant="5" id="1CK-Fb-Cyl"/>
                             <constraint firstItem="i5N-Pm-zdk" firstAttribute="leading" secondItem="0vB-1p-CX2" secondAttribute="leading" id="1PS-l7-Udy"/>
-                            <constraint firstItem="NZb-rr-MON" firstAttribute="top" secondItem="R10-xK-0kQ" secondAttribute="bottom" constant="2" id="6nD-Xb-HLS"/>
                             <constraint firstItem="oH6-ui-Q2J" firstAttribute="leading" secondItem="nuk-QY-erE" secondAttribute="trailing" constant="5" id="AC4-sZ-JSB"/>
                             <constraint firstItem="PpH-Ej-pg8" firstAttribute="trailing" secondItem="51v-oc-axB" secondAttribute="trailing" id="ASY-zX-Uy3"/>
                             <constraint firstItem="R10-xK-0kQ" firstAttribute="leading" secondItem="Vi2-Fy-vWV" secondAttribute="leading" id="BpF-CC-6R9"/>
@@ -161,7 +153,6 @@
                             <constraint firstItem="51v-oc-axB" firstAttribute="leading" secondItem="R10-xK-0kQ" secondAttribute="trailing" constant="5" id="bcm-0z-YMB"/>
                             <constraint firstItem="3iQ-eE-Hxy" firstAttribute="height" secondItem="nuk-QY-erE" secondAttribute="height" id="d5f-Z0-32c"/>
                             <constraint firstItem="oH6-ui-Q2J" firstAttribute="centerY" secondItem="nuk-QY-erE" secondAttribute="centerY" id="dcX-sR-w9r"/>
-                            <constraint firstItem="NZb-rr-MON" firstAttribute="centerX" secondItem="R10-xK-0kQ" secondAttribute="centerX" id="f56-K1-dVe"/>
                             <constraint firstItem="0DQ-ML-daa" firstAttribute="centerY" secondItem="oH6-ui-Q2J" secondAttribute="centerY" id="fo2-My-BgV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Vi2-Fy-vWV" secondAttribute="trailing" constant="12" id="gRS-Ot-5fe"/>
                             <constraint firstItem="i5N-Pm-zdk" firstAttribute="width" secondItem="0vB-1p-CX2" secondAttribute="width" id="i1l-EN-bXR"/>
@@ -182,7 +173,6 @@
                         <outlet property="placementIDTableView" destination="i5N-Pm-zdk" id="HKq-R4-UW0"/>
                         <outlet property="placementIDTextField" destination="0vB-1p-CX2" id="Gd8-uf-4gs"/>
                         <outlet property="selectAdTypeBtn" destination="51v-oc-axB" id="ndA-CJ-zfw"/>
-                        <outlet property="swicthCustomSize" destination="NZb-rr-MON" id="ju7-0e-I7D"/>
                         <outlet property="triangleImg" destination="7eA-Rg-9it" id="0dW-4O-Ztu"/>
                         <outlet property="versionIDTextField" destination="0DQ-ML-daa" id="ki5-DF-zDy"/>
                     </connections>
