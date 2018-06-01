@@ -16,6 +16,7 @@
 #import <YumiMediationDebugCenter-iOS/YumiMediationFetchAdConfig.h>
 #import <YumiMediationSDK/YumiAdsSplash.h>
 #import <YumiMediationSDK/YumiMediationAdapterRegistry.h>
+#import <YumiMediationSDK/YumiMediationBannerView.h>
 #import <YumiMediationSDK/YumiMediationInterstitial.h>
 #import <YumiMediationSDK/YumiMediationNativeAd.h>
 #import <YumiMediationSDK/YumiMediationVideo.h>
@@ -146,7 +147,6 @@ static int nativeAdNumber = 10;
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self requestAdConfig];
     // initialize global log
     self.bannerAdLog = @"";
     self.interstitialAdLog = @"";
@@ -169,6 +169,7 @@ static int nativeAdNumber = 10;
         self.isOnce = YES;
         [self implementTestFeature];
     }
+    
     YumiMediationAdapterRegistry *yumiRegistry = [YumiMediationAdapterRegistry registry];
     yumiRegistry.providerWhiteList = nil;
 }
@@ -224,18 +225,25 @@ static int nativeAdNumber = 10;
     });
 }
 
-- (NSArray<YumiMediationProvider *> *)fetchAdConfigWith:(YumiMediationAdType)adType {
+- (void)fetchAdConfigWith:(YumiMediationAdType)adType {
     NSString *placementID = [self getAdPlacementIDWith:adType];
     if (placementID.length == 0) {
-        return nil;
+        return;
     }
+    __weak typeof(self) weakSelf = self;
     YumiMediationFetchAdConfig *adConfig = [YumiMediationFetchAdConfig sharedFetchAdConfig];
-    NSArray<YumiMediationProvider *> *providers =
-        [adConfig fetchAdConfigWith:adType placementID:placementID channelID:self.channelID versionID:self.versionID];
-    if (providers.count > 0) {
-        self.isConfigSuccess = YES;
-    }
-    return providers;
+    [adConfig getAdConfigWith:adType
+                  placementID:placementID
+                    channelID:self.channelID
+                    versionID:self.channelID
+                      success:^(YumiMediationConfiguration *_Nonnull config) {
+                          if (config.providers) {
+                              weakSelf.isConfigSuccess = YES;
+                          }
+                      }
+                      failure:^(NSError *_Nonnull error){
+
+                      }];
 }
 
 - (void)showLogConsoleWith:(NSString *)log adLogType:(YumiMediationAdLogType)adLogType {
@@ -288,13 +296,13 @@ static int nativeAdNumber = 10;
     [alert addAction:[UIAlertAction actionWithTitle:@"NO"
                                               style:UIAlertActionStyleDefault
                                             handler:^(UIAlertAction *_Nonnull action){
-
+                                                [self requestAdConfig];
                                             }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"YES"
                                               style:UIAlertActionStyleDefault
                                             handler:^(UIAlertAction *_Nonnull action) {
                                                 [YumiTest enableTestMode];
-
+                                                [self requestAdConfig];
                                             }]];
 
     [self presentViewController:alert animated:YES completion:nil];
@@ -370,7 +378,6 @@ static int nativeAdNumber = 10;
                                                                       channelID:self.channelID
                                                                       versionID:self.versionID
                                                              rootViewController:self];
-    [[YumiMediationDebugController sharedInstance] setupBannerSize:self.bannerSize];
 }
 - (IBAction)clickRequestAd:(UIButton *)sender {
 
@@ -378,10 +385,8 @@ static int nativeAdNumber = 10;
     dispatch_async(dispatch_get_main_queue(), ^{
 
         switch (weakSelf.selectAdType.selectedSegmentIndex) {
-            case 0:
-
+            case 0: {
                 [weakSelf.bannerView loadAd:weakSelf.switchIsSmartSize.on];
-                weakSelf.bannerView.bannerSize = self.bannerSize;
                 _bannerView.delegate = weakSelf;
                 [weakSelf showLogConsoleWith:[NSString stringWithFormat:@"initialize   banner ad placementID : %@",
                                                                         weakSelf.bannerPlacementID]
@@ -390,8 +395,7 @@ static int nativeAdNumber = 10;
                 [weakSelf.view addSubview:weakSelf.bannerView];
                 weakSelf.bannerView.hidden = NO;
                 [weakSelf.view bringSubviewToFront:weakSelf.bannerView];
-
-                break;
+            } break;
             case 1:
                 [weakSelf showLogConsoleWith:[NSString stringWithFormat:@"initialize  interstitial ad placementID : %@",
                                                                         weakSelf.interstitialPlacementID]
@@ -617,7 +621,6 @@ static int nativeAdNumber = 10;
     rootVc.presented = YES;
     rootVc.delegate = self;
     rootVc.adType = (YumiAdType)self.adType;
-    rootVc.bannerSize = self.bannerSize;
     [self presentViewController:rootVc animated:YES completion:nil];
 
     [[UIApplication sharedApplication].keyWindow.layer transitionWithAnimType:TransitionAnimTypeRamdom
@@ -811,8 +814,7 @@ static int nativeAdNumber = 10;
 - (void)modifyPlacementID:(NSString *)placementID
                 channelID:(NSString *)channelID
                 versionID:(NSString *)versionID
-                   adType:(YumiAdType)adType
-               bannerSize:(YumiMediationAdViewBannerSize) bannerSize {
+                   adType:(YumiAdType)adType {
 
     [self removeBannerAd:YES];
     [self removeNativeAd:YES];
@@ -827,7 +829,7 @@ static int nativeAdNumber = 10;
     if (self.yumiSplash) {
         self.yumiSplash = nil;
     }
-    self.bannerSize = bannerSize;
+
     [self setupAdPlacementID:placementID adType:adType];
     self.channelID = channelID;
     self.versionID = versionID;

@@ -25,7 +25,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *adTypeTableView;
 @property (weak, nonatomic) IBOutlet UIImageView *triangleImg;
 @property (weak, nonatomic) IBOutlet UIButton *selectAdTypeBtn;
-@property (weak, nonatomic) IBOutlet UISwitch *swicthCustomSize;
 
 @property (nonatomic) NSString *placementID;
 @property (nonatomic) NSString *channelID;
@@ -65,9 +64,6 @@
     if (self.isPresented) {
         [self updatedAdTypeMessageWith:self.adType];
     }
-    if (self.bannerSize == kYumiMediationAdViewBanner300x250) {
-        self.swicthCustomSize.on = YES;
-    }
 }
 
 - (void)initializePlacementIDs {
@@ -85,7 +81,7 @@
     }
 }
 
-#pragma mark : - provate method
+#pragma mark : - private method
 
 - (void)showMessage {
     [self.view makeToast:@"placementID is nil or  The length error " duration:1.0 position:CSToastPositionCenter];
@@ -98,13 +94,11 @@
                                                           versionID:self.versionID
                                                              adType:self.adType];
     [UIApplication sharedApplication].keyWindow.rootViewController = rootVc;
-    if (self.swicthCustomSize.on) {
-        rootVc.bannerSize = kYumiMediationAdViewBanner300x250;
-    }
+
     [[UIApplication sharedApplication].keyWindow.layer transitionWithAnimType:TransitionAnimTypeRamdom
                                                                       subType:TransitionSubtypesFromRamdom
                                                                         curve:TransitionCurveRamdom
-                                                                     duration:2.0];
+                                                                     duration:1.0];
 }
 
 #pragma mark :- touch
@@ -167,17 +161,17 @@
                                  completion:^{
                                      if (weakSelf.delegate &&
                                          [weakSelf.delegate respondsToSelector:@selector
-                                                            (modifyPlacementID:channelID:versionID:adType: bannerSize:)]) {
+                                                            (modifyPlacementID:channelID:versionID:adType:)]) {
                                          [weakSelf.delegate modifyPlacementID:weakSelf.placementID
                                                                     channelID:weakSelf.channelID
                                                                     versionID:weakSelf.versionID
-                                                                       adType:weakSelf.adType bannerSize:self.swicthCustomSize.on ?kYumiMediationAdViewBanner300x250: kYumiMediationAdViewBanner320x50 ];
+                                                                       adType:weakSelf.adType];
                                      }
                                  }];
         [[UIApplication sharedApplication].keyWindow.layer transitionWithAnimType:TransitionAnimTypeRamdom
                                                                           subType:TransitionSubtypesFromRamdom
                                                                             curve:TransitionCurveRamdom
-                                                                         duration:2.0];
+                                                                         duration:1.0];
         return;
     }
     [self setRootVc];
