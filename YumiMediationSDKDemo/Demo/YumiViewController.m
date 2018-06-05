@@ -12,6 +12,7 @@
 #import "YumiMediationAppViewController.h"
 #import "YumiMediationInitializeInfoUserDefaults.h"
 #import "YumiMediationInitializeModel.h"
+#import <FLEX/FLEXManager.h>
 
 #define PLACEMENTIDLENGTH 1
 
@@ -64,6 +65,8 @@
     if (self.isPresented) {
         [self updatedAdTypeMessageWith:self.adType];
     }
+    
+    [[FLEXManager sharedManager] showExplorer];
 }
 
 - (void)initializePlacementIDs {
